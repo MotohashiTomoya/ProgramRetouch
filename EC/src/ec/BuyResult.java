@@ -32,6 +32,7 @@ public class BuyResult extends HttpServlet {
 		try {
 
 			// セッションからカート情報を取得
+			@SuppressWarnings("unchecked")
 			ArrayList<ItemDataBeans> cart = (ArrayList<ItemDataBeans>) EcHelper.cutSessionAttribute(session, "cart");
 
 			BuyDataBeans bdb = (BuyDataBeans) EcHelper.cutSessionAttribute(session, "bdb");

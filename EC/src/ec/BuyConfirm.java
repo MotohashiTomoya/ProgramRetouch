@@ -32,6 +32,7 @@ public class BuyConfirm extends HttpServlet {
 			//選択されたIDをもとに配送方法Beansを取得
 			DeliveryMethodDataBeans userSelectDMB = DeliveryMethodDAO.getDeliveryMethodDataBeansByID(inputDeliveryMethodId);
 			//買い物かご
+			@SuppressWarnings("unchecked")
 			ArrayList<ItemDataBeans> cartIDBList = (ArrayList<ItemDataBeans>) session.getAttribute("cart");
 			//合計金額
 			int totalPrice = EcHelper.getTotalItemPrice(cartIDBList);

@@ -62,20 +62,17 @@
 								</tr>
 							</thead>
 							<tbody>
-
-								<tr>
-									<td class="center"><a href="UserBuyHistoryDetail?buy_id=1" class="btn-floating btn waves-effect waves-light "> <i class="material-icons">details</i></a></td>
-									<td class="center"></td>
-									<td class="center">${bdb.deliveryMethodName}</td>
-									<td class="center">${bdb.totalPrice}円</td>
-								</tr>
-								<tr>
-									<td class="center"><a href="UserBuyHistoryDetail?buy_id=2" class="btn-floating btn waves-effect waves-light "> <i class="material-icons">details</i></a></td>
-									<td class="center"></td>
-									<td class="center">${bdb.deliveryMethodName}</td>
-									<td class="center">${bdb.totalPrice}円</td>
-								</tr>
-
+								<c:forEach var="bdb" items="${bdb}">
+									<tr>
+										<td class="center"><a
+											href="UserBuyHistoryDetail?buy_id=${bdb.id}"
+											class="btn-floating btn waves-effect waves-light "> <i
+												class="material-icons">details</i></a></td>
+										<td class="center">${bdb.formatDate}</td>
+										<td class="center">${bdb.deliveryMethodName}</td>
+										<td class="center">${bdb.totalPrice}円</td>
+									</tr>
+								</c:forEach>
 							</tbody>
 						</table>
 					</div>

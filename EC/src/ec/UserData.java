@@ -1,6 +1,7 @@
 package ec;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,7 +25,6 @@ import dao.UserDAO;
 public class UserData extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	@SuppressWarnings("unused")
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		// セッション開始
@@ -39,13 +39,14 @@ public class UserData extends HttpServlet {
 
 			// 購入した商品情報検索
 			BuyDAO buy=new BuyDAO();
-			BuyDataBeans bdb=buy.getBuyDataBeansByUserId(userId);
+			ArrayList<BuyDataBeans> bdb=buy.getBuyDataBeansByUserId(userId);
+			request.setAttribute("bdb", bdb);
 			// 入力された内容に誤りがあったとき等に表示するエラーメッセージを格納する
 			String validationMessage = (String) EcHelper.cutSessionAttribute(session, "validationMessage");
 
 
 
-			request.setAttribute("bdb", bdb);
+
 			request.setAttribute("validationMessage", validationMessage);
 			request.setAttribute("udb", udb);
 
